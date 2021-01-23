@@ -1,0 +1,3 @@
+cn.lmh.rpc.common.protocol.JavaSerializeMessageProtocol
+cn.lmh.rpc.common.protocol.ProtoBufMessageProtocol
+cn.lmh.rpc.common.protocol.KryoMessageProtocol
