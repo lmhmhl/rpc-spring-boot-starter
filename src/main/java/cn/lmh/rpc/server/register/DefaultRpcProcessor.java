@@ -74,7 +74,7 @@ public class DefaultRpcProcessor implements ApplicationListener<ContextRefreshed
                 Object object = context.getBean(name);
                 field.setAccessible(true);
                 try {
-                    field.set(object,clientProxyFactory.getProxy(fieldClass));
+                    field.set(object, clientProxyFactory.getProxy(fieldClass));
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
