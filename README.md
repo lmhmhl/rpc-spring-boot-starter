@@ -75,5 +75,3 @@ public class UserServiceImpl implements UserService{
 |    sp.rpc.server-port |  服务端通信端口号     |  默认9999|
 | sp.rpc.weight | 权重 |默认1  |  
 
-用法 demo
-https://github.com/2YSP/rpc-example
