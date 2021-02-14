@@ -1,12 +1,19 @@
 # rpc-spring-boot-starter
-利用netty实现的rpc框架
-- 支持Java序列化和protobuf序列化协议
+利用Netty实现的rpc框架
+- 支持Java序列化和Protobuf序列化协议
 - 支持多种客户端负载均衡（随机、轮询、加权轮询和平滑加权轮询）算法
 
+* 改进功能点：
+（1）除了 Java 序列化协议，增加了 Protobuf 和 Kryo 序列化协议，配置即用。 
+（2）增加多种负载均衡算法（随机、轮询、加权轮询、平滑加权轮询），配置即用。 
+（3）客户端增加本地服务列表缓存，提高性能。 
+（4）修复高并发情况下，Netty导致的内存泄漏问题.
+（5）由原来的每个请求建立一次连接，改为建立 TCP 长连接，并多次复用。 
+（6）服务端增加线程池提高消息处理能力.
 # 使用方法
 1. 下载代码到本地
 ```bash
-git clone https://github.com/2YSP/rpc-spring-boot-starter.git
+git clone https://github.com/lmhmhl/rpc-spring-boot-starter
 ```
 2. 打包到本地
 ```bash
@@ -39,9 +46,9 @@ public class TestController {
 配置项：
 |    属性 |含义      |  可选项   |
 | --- | --- | --- |
-|   sp.rpc.protocol  | 消息序列化协议        |  java，protobuf，kryo   |
-|    sp.rpc.register-address |  注册中心地址      |  默认localhost:2181   |
-|    sp.rpc.load-balance |  负载均衡算法     | random<br>round<br>weightRound<br>smoothWeightRound|
+|   lmh.rpc.protocol  | 消息序列化协议        |  java，protobuf，kryo   |
+|    lmh.rpc.register-address |  注册中心地址      |  默认localhost:2181   |
+|    lmh.rpc.load-balance |  负载均衡算法     | random<br>round<br>weightRound<br>smoothWeightRound|
 
 
  ## 服务端
@@ -70,8 +77,8 @@ public class UserServiceImpl implements UserService{
  配置项：
 |    属性 |含义      |  可选项   |
 | --- | --- | --- |
-|   sp.rpc.protocol  | 消息序列化协议        |  java，protobuf，kryo   |
-|    sp.rpc.register-address |  注册中心地址      |  默认localhost:2181   |
-|    sp.rpc.server-port |  服务端通信端口号     |  默认9999|
-| sp.rpc.weight | 权重 |默认1  |  
+|   lmh.rpc.protocol  | 消息序列化协议        |  java，protobuf，kryo   |
+|    lmh.rpc.register-address |  注册中心地址      |  默认localhost:2181   |
+|    lmh.rpc.server-port |  服务端通信端口号     |  默认9999|
+| lmh.rpc.weight | 权重 |默认1  |  
 

@@ -67,9 +67,8 @@ public class RpcAutoConfiguration {
     @Bean
     public ClientProxyFactory proxyFactory(@Autowired RpcConfig rpcConfig) {
         ClientProxyFactory clientProxyFactory = new ClientProxyFactory();
-        // 设置服务发现着
+        // 设置服务发现者
         clientProxyFactory.setServerDiscovery(new ZookeeperServerDiscovery(rpcConfig.getRegisterAddress()));
-
         // 设置支持的协议
         Map<String, MessageProtocol> supportMessageProtocols = buildSupportMessageProtocols();
         clientProxyFactory.setSupportMessageProtocols(supportMessageProtocols);
@@ -78,7 +77,6 @@ public class RpcAutoConfiguration {
         clientProxyFactory.setLoadBalance(loadBalance);
         // 设置网络层实现
         clientProxyFactory.setNetClient(new NettyNetClient());
-
         return clientProxyFactory;
     }
 

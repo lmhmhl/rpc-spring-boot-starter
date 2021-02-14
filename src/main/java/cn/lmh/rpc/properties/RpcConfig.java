@@ -6,9 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author lmhmhl
  * @date 2020/7/26 15:13
  */
-@ConfigurationProperties(prefix = "sp.rpc")
+@ConfigurationProperties(prefix = "lmh.rpc")
 public class RpcConfig {
-
     /**
      * 服务注册中心地址
      */
